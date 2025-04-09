@@ -40,6 +40,39 @@ export async function createCheckoutSession({
     allow_promotion_codes: true,
     subscription_data: {
       trial_period_days: 14
+    },
+    custom_text: {
+      submit: {
+        message: 'Your subscription will begin after your 14-day free trial'
+      }
+    },
+    custom_fields: [
+      {
+        key: 'company',
+        label: {
+          type: 'custom',
+          custom: 'Company Name'
+        },
+        type: 'text',
+        optional: true
+      }
+    ],
+    billing_address_collection: 'required',
+    phone_number_collection: {
+      enabled: true
+    },
+    tax_id_collection: {
+      enabled: true
+    },
+    automatic_tax: {
+      enabled: true
+    },
+    customer_update: {
+      address: 'auto',
+      name: 'auto'
+    },
+    consent_collection: {
+      terms_of_service: 'required'
     }
   });
 
